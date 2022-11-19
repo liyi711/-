@@ -1,28 +1,29 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+   <!-- </div> -->
+  <div id="main">
+    <router-view :cityip="cityip" :cityname="cityname" @setcity="setcity"></router-view>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
+  data(){
+    return{
+      cityip:20,
+      cityname:"广州",
+    }
+  },
+  methods:{
+    setcity(obj){
+      let cname = obj.cname;
+      let cip = obj.cip;
+      this.cityip = cip;
+      this.cityname = cname;
+    }
+  },
 }
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="less">
+@import "./assets/css/base.css";
 </style>
